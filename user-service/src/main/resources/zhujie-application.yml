@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: dubbo-auto-configuration-provider-demo
+dubbo:
+  scan:
+    base-packages: com.mao.user.service.impl
+  protocol:
+    name: dubbo
+    port: 12345
+  registry:
+    address: zookeeper://192.168.31.14:2181
+  #address: N/A(若不采用zookeeper注册，将上一行注释掉，改为这行。消费者去掉注册地址)

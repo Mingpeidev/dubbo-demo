@@ -1,0 +1,15 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--指定了超时时间，重试次数，注册中心，版本号，分组。消费者也要相应配置后两个-->
+    <bean id="userService" class="com.mao.user.service.impl.UserServiceImpl"/>
+    <dubbo:service interface="com.mao.user.service.UserService" ref="userService" timeout="3000" retries="4"
+                   registry="local" version="1.0.0" group="firstimpl"/>
+
+    <bean id="user1Service" class="com.mao.user.service.impl.User1ServiceImpl"/>
+    <dubbo:service interface="com.mao.user.service.User1Service" ref="user1Service" timeout="3000" retries="4"
+                   registry="local" version="1.0.0"/>
+</beans>

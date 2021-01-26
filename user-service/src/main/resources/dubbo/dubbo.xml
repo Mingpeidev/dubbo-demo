@@ -1,0 +1,21 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <description>
+        存放Spring Dubbo相关配置。
+        group分组是一个服务多种实现时的区别，可以通过分组调用不同实现
+        version版本是区分服务参数大改时的手段，可以通过版本号调用不同版本的接口（不兼容升级时，版本号过渡）
+    </description>
+
+    <!--多注册中心-->
+    <dubbo:registry id="local" address="zookeeper://192.168.31.15:2181"/>
+    <dubbo:registry id="remote" address="zookeeper://192.168.31.10:2181"/>
+
+    <dubbo:protocol name="dubbo" port="12345"/>
+
+    <!--也可合在一起-->
+    <import resource="dubbo-provider.xml"/>
+</beans>
